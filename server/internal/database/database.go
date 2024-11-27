@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/lcaohoanq/react-go-fiber/models"
+	"github.com/lcaohoanq/react-go-fiber/internal/models"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

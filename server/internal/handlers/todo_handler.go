@@ -4,8 +4,8 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/lcaohoanq/react-go-fiber/database"
-	"github.com/lcaohoanq/react-go-fiber/models"
+	"github.com/lcaohoanq/react-go-fiber/internal/database"
+	"github.com/lcaohoanq/react-go-fiber/internal/models"
 )
 
 func GetTodos(c *fiber.Ctx) error {

@@ -73,7 +73,7 @@ const HomePage = () => {
               </Button>
               <Button
                 as={RouterLink}
-                to="/"
+                to="/tasks"
                 colorScheme="teal"
                 size="lg"
                 px={8}

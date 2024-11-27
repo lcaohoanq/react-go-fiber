@@ -7,8 +7,8 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/lcaohoanq/react-go-fiber/database"
-	"github.com/lcaohoanq/react-go-fiber/models"
+	"github.com/lcaohoanq/react-go-fiber/internal/database"
+	"github.com/lcaohoanq/react-go-fiber/internal/models"
 	"golang.org/x/crypto/bcrypt"
 )
 
