@@ -4,7 +4,7 @@ import App from "./App.tsx";
 import "./index.scss";
 import { ChakraProvider } from "@chakra-ui/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AuthProvider } from './context/AuthContext'
+import { AuthProvider } from "./context/AuthContext";
 
 const queryClient = new QueryClient();
 

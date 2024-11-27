@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { useState } from "react";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import {
   Box,
   Button,
@@ -14,44 +14,46 @@ import {
   InputRightElement,
   IconButton,
   Link,
-} from '@chakra-ui/react';
-import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { useAuth } from '../../context/AuthContext';
+} from "@chakra-ui/react";
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+import { useAuth } from "../../context/AuthContext";
 
 const RegisterForm = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { register } = useAuth();
   const toast = useToast();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Basic validation
     if (password !== confirmPassword) {
       toast({
-        title: 'Error',
-        description: 'Passwords do not match',
-        status: 'error',
+        title: "Error",
+        description: "Passwords do not match",
+        status: "error",
         duration: 3000,
         isClosable: true,
+        position: "top-right",
       });
       return;
     }
 
     if (password.length < 6) {
       toast({
-        title: 'Error',
-        description: 'Password must be at least 6 characters long',
-        status: 'error',
+        title: "Error",
+        description: "Password must be at least 6 characters long",
+        status: "error",
         duration: 3000,
         isClosable: true,
+        position: "top-right",
       });
       return;
     }
@@ -60,20 +62,22 @@ const RegisterForm = () => {
       setIsLoading(true);
       await register(name, email, password);
       toast({
-        title: 'Account created.',
+        title: "Account created.",
         description: "We've created your account for you.",
-        status: 'success',
+        status: "success",
         duration: 3000,
         isClosable: true,
+        position: "top-right",
       });
-      navigate('/');
+      navigate("/");
     } catch (error: any) {
       toast({
-        title: 'Error',
-        description: error.message || 'Something went wrong',
-        status: 'error',
+        title: "Error",
+        description: error.message || "Something went wrong",
+        status: "error",
         duration: 3000,
         isClosable: true,
+        position: "top-right",
       });
     } finally {
       setIsLoading(false);
@@ -110,14 +114,16 @@ const RegisterForm = () => {
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter password"
                 />
                 <InputRightElement>
                   <IconButton
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
                     onClick={() => setShowPassword(!showPassword)}
                     variant="ghost"
@@ -131,14 +137,16 @@ const RegisterForm = () => {
               <FormLabel>Confirm Password</FormLabel>
               <InputGroup>
                 <Input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Confirm password"
                 />
                 <InputRightElement>
                   <IconButton
-                    aria-label={showPassword ? 'Hide password' : 'Show password'}
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     icon={showPassword ? <ViewOffIcon /> : <ViewIcon />}
                     onClick={() => setShowPassword(!showPassword)}
                     variant="ghost"
@@ -160,7 +168,7 @@ const RegisterForm = () => {
         </form>
 
         <Text textAlign="center">
-          Already have an account?{' '}
+          Already have an account?{" "}
           <Link as={RouterLink} to="/login" color="blue.500">
             Login here
           </Link>
@@ -170,4 +178,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm; 
+export default RegisterForm;

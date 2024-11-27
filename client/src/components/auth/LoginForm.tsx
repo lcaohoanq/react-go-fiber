@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useAuth } from '../../context/AuthContext';
+import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 import {
   Box,
   Button,
@@ -11,12 +11,12 @@ import {
   useToast,
   Heading,
   Link,
-} from '@chakra-ui/react';
-import { Link as RouterLink } from 'react-router-dom';
+} from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 const LoginForm = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const { login } = useAuth();
   const toast = useToast();
 
@@ -25,14 +25,20 @@ const LoginForm = () => {
     try {
       await login(email, password);
       toast({
-        title: 'Login successful',
-        status: 'success',
+        title: "Login successful",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
       });
     } catch (error: any) {
       toast({
-        title: 'Error',
+        title: "Error",
         description: error.message,
-        status: 'error',
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
       });
     }
   };
@@ -65,7 +71,7 @@ const LoginForm = () => {
           </VStack>
         </form>
         <Text textAlign="center">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <Link as={RouterLink} to="/register" color="blue.500">
             Register here
           </Link>
@@ -75,4 +81,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm; 
+export default LoginForm;

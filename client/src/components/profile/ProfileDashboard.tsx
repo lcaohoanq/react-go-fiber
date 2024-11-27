@@ -65,7 +65,7 @@ const ProfileDashboard = () => {
         {/* User Info Section */}
         <Box>
           <Heading size="lg" mb={4}>
-            Profile Dashboard
+            My Profile
           </Heading>
           <Card>
             <CardHeader>
@@ -102,18 +102,20 @@ const ProfileDashboard = () => {
             </CardHeader>
             <CardBody>
               <VStack spacing={4} align="stretch">
-                <Box>
-                  <StatLabel>Completion Rate</StatLabel>
-                  <Progress
-                    value={data?.stats.completionRate}
-                    colorScheme="green"
-                    size="lg"
-                    borderRadius="md"
-                  />
-                  <StatHelpText>
-                    {data?.stats.completionRate.toFixed(1)}% Complete
-                  </StatHelpText>
-                </Box>
+                <Stat>
+                  <Box>
+                    <StatLabel>Completion Rate</StatLabel>
+                    <Progress
+                      value={data?.stats.completionRate}
+                      colorScheme="green"
+                      size="lg"
+                      borderRadius="md"
+                    />
+                    <StatHelpText>
+                      {data?.stats.completionRate.toFixed(1)}% Complete
+                    </StatHelpText>
+                  </Box>
+                </Stat>
                 <SimpleGrid columns={2} spacing={4}>
                   <Stat>
                     <StatLabel>Total Todos</StatLabel>
@@ -157,24 +159,32 @@ const ProfileDashboard = () => {
             </CardHeader>
             <CardBody>
               <VStack spacing={4} align="stretch">
-                <Box>
+                <Stat>
                   <StatLabel>Pending Tasks</StatLabel>
                   <StatNumber>{data?.stats.pendingTodos}</StatNumber>
                   <Progress
-                    value={(data?.stats.pendingTodos || 0) / (data?.stats.totalTodos || 1) * 100}
+                    value={
+                      ((data?.stats.pendingTodos || 0) /
+                        (data?.stats.totalTodos || 1)) *
+                      100
+                    }
                     colorScheme="yellow"
                     size="sm"
                   />
-                </Box>
-                <Box>
+                </Stat>
+                <Stat>
                   <StatLabel>Completed Tasks</StatLabel>
                   <StatNumber>{data?.stats.completedTodos}</StatNumber>
                   <Progress
-                    value={(data?.stats.completedTodos || 0) / (data?.stats.totalTodos || 1) * 100}
+                    value={
+                      ((data?.stats.completedTodos || 0) /
+                        (data?.stats.totalTodos || 1)) *
+                      100
+                    }
                     colorScheme="green"
                     size="sm"
                   />
-                </Box>
+                </Stat>
               </VStack>
             </CardBody>
           </Card>
@@ -184,4 +194,4 @@ const ProfileDashboard = () => {
   );
 };
 
-export default ProfileDashboard; 
+export default ProfileDashboard;
