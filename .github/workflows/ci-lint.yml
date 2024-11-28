@@ -1,0 +1,43 @@
+name: Go Code Quality Report
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.23.3"
+          cache: true
+          cache-dependency-path: server/go.sum
+
+      - name: Install dependencies
+        working-directory: ./server
+        run: |
+          go mod tidy
+          go mod download
+
+      - name: Install golangci-lint
+        run: |
+          go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+
+      - name: Run golangci-lint
+        working-directory: ./server
+        run: |
+          golangci-lint run --out-format checkstyle > golangci-lint-report.xml
+
+      - name: Upload golangci-lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: golangci-lint-report
+          path: ./server/golangci-lint-report.xml
