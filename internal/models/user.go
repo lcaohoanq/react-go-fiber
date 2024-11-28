@@ -17,6 +17,7 @@ type User struct {
 	Name     string `json:"name" gorm:"not null"`
 	Email    string `json:"email" gorm:"uniqueIndex;not null"`
 	Password string `json:"password" gorm:"not null"`
+	Avatar   string `json:"avatar" gorm:"type:text"`
 	Role     Role   `json:"role" gorm:"type:varchar(10);default:'MEMBER'"`
 	Todos    []Todo `json:"todos,omitempty" gorm:"foreignKey:UserID"`
 }
