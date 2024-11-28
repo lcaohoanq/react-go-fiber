@@ -29,7 +29,7 @@ jobs:
 
       - name: Install GoReporter
         run: |
-          go install github.com/qax-os/goreporter/releases/tag/version3.0.2
+          go install github.com/qax-os/goreporter/releases/tag/version3.0.2@latest
 
       - name: Generate Report
         working-directory: ./server
