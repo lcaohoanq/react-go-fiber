@@ -50,7 +50,7 @@ jobs:
       - name: Upload HTML Report
         uses: actions/upload-artifact@v4
         with:
-          name: golangci-lint-report
+          name: golangci-lint-report-html
           path: ./server/golangci-lint-report.html
 
       # Deploy to GitHub Pages
