@@ -2,8 +2,8 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/lcaohoanq/react-go-fiber/internal/handlers"
-	"github.com/lcaohoanq/react-go-fiber/internal/middleware"
+	"github.com/lcaohoanq/react-go-fiber/server/internal/handlers"
+	"github.com/lcaohoanq/react-go-fiber/server/internal/middleware"
 )
 
 func SetupRoutes(app *fiber.App) {

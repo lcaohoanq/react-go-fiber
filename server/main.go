@@ -7,8 +7,8 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/joho/godotenv"
-	"github.com/lcaohoanq/react-go-fiber/internal/routes"
-	"github.com/lcaohoanq/react-go-fiber/pkg/database"
+	"github.com/lcaohoanq/react-go-fiber/server/internal/routes"
+	"github.com/lcaohoanq/react-go-fiber/server/pkg/database"
 )
 
 func main() {
