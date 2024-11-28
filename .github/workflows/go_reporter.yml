@@ -1,4 +1,4 @@
-name: Go Reporter CI
+name: Go Code Quality Report
 
 on:
   push:
@@ -18,6 +18,14 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: "1.23.3"
+          cache: true
+          cache-dependency-path: server/go.sum
+
+      - name: Install dependencies
+        working-directory: ./server
+        run: |
+          go mod tidy
+          go mod download
 
       - name: Install GoReporter
         run: |
