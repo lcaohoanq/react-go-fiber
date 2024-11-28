@@ -31,13 +31,34 @@ jobs:
         run: |
           go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
-      - name: Run golangci-lint
+      - name: Run golangci-lint with xml output
         working-directory: ./server
         run: |
           golangci-lint run --out-format checkstyle > golangci-lint-report.xml
+
+      - name: Run golangci-lint with html output
+        working-directory: ./server
+        run: |
+          golangci-lint run --out-format html > golangci-lint-report.html
 
       - name: Upload golangci-lint Report
         uses: actions/upload-artifact@v4
         with:
           name: golangci-lint-report
           path: ./server/golangci-lint-report.xml
+
+      - name: Upload HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: golangci-lint-report
+          path: ./server/golangci-lint-report.html
+
+      # Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: ./server
+          keep_files: true
