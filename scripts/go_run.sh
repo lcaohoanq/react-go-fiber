@@ -15,10 +15,10 @@ cd ../server || { echo "Error: Could not change to server directory"; exit 1; }
 docker compose up -d
 
 # Check if Go main file exists before trying to run
-if [[ ! -f "cmd/server/main.go" ]]; then
-  echo "Error: cmd/server/main.go not found"
+if [[ ! -f "main.go" ]]; then
+  echo "Error: main.go not found"
   exit 1
 fi
 
 # Run the Go server
-go run cmd/server/main.go
+go run main.go

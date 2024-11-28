@@ -2,8 +2,8 @@ package handlers
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"github.com/lcaohoanq/react-go-fiber/internal/database"
 	"github.com/lcaohoanq/react-go-fiber/internal/models"
+	"github.com/lcaohoanq/react-go-fiber/pkg/database"
 )
 
 type UserStats struct {
