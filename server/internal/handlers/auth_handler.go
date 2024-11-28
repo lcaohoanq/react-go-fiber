@@ -57,6 +57,7 @@ func Register(c *fiber.Ctx) error {
 		Name:     input.Name,
 		Email:    input.Email,
 		Password: string(hashedPassword),
+		Avatar:   "https://ui-avatars.com/api/?name=" + input.Name,
 		Role:     models.MEMBER,
 	}
 
